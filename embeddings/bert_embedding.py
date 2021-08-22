@@ -1,6 +1,5 @@
 import os
 import argparse
-import logging
 import tqdm
 import pandas as pd
 import numpy as np
