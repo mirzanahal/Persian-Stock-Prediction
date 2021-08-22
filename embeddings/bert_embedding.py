@@ -37,9 +37,9 @@ def embedding(sentence, model, tokenizer):
 def update_embeddings(normalized_news, ids, model, tokenizer, output_path, batch_size=1000):
     out_dir = os.path.join(output_path, 'embedding')
 
-    try: embedding_news = load_object(name='embedding_news', directiry=out_dir)
+    try: embedding_news = load_object(name='embedding_news', directory=out_dir)
     except: embedding_news = {}
-    try: key_list = load_object(name='key_list', directiry=out_dir)
+    try: key_list = load_object(name='key_list', directory=out_dir)
     except: key_list = []
 
     start = len(key_list)
@@ -58,18 +58,18 @@ def update_embeddings(normalized_news, ids, model, tokenizer, output_path, batch
 
         if i % batch_size == 0:
             print('save step {}'.format(i))
-            save_object(embedding_news, name='embedding_news_{}'.format(i), directiry=out_dir)
-            save_object(key_list, name='key_list', directiry=out_dir)
+            save_object(embedding_news, name='embedding_news_{}'.format(i), directory=out_dir)
+            save_object(key_list, name='key_list', directory=out_dir)
             embedding_news = {}
-    save_object(embedding_news, name='embedding_news', directiry=out_dir)
-    save_object(key_list, name='key_list', directiry=out_dir)
+    save_object(embedding_news, name='embedding_news', directory=out_dir)
+    save_object(key_list, name='key_list', directory=out_dir)
 
 
 def load_aggregate_embeddings(name, length, output_path, steps=1000, offset=500):
     out_dir = os.path.join(output_path, 'embedding')
-    embedding_news = load_object(name='{}'.format(name), directiry=out_dir)
+    embedding_news = load_object(name='{}'.format(name), directory=out_dir)
     for i in tqdm(range(0, length + offset, steps)):
-        step_emb = load_object(name='{}_{}'.format(name, i), directiry=out_dir)
+        step_emb = load_object(name='{}_{}'.format(name, i), directory=out_dir)
         embedding_news.update(step_emb)
     return embedding_news
 

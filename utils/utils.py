@@ -3,12 +3,12 @@ import os
 import pickle
 
 
-def save_object(object, name , directiry):
-    with open(os.path.join(directiry, name + '.pkl'), 'wb') as f:
+def save_object(object, name , directory):
+    with open(os.path.join(directory, name + '.pkl'), 'wb') as f:
         pickle.dump(object, f, pickle.HIGHEST_PROTOCOL)
 
-def load_object(name , directiry):
-    with open(os.path.join(directiry, name + '.pkl'), 'rb') as f:
+def load_object(name , directory):
+    with open(os.path.join(directory, name + '.pkl'), 'rb') as f:
         return pickle.load(f)
 
 
